@@ -13,15 +13,28 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 const NGOPage = () => {
-    const [error, setError] = useState<string | null>(null);
-    const [uid, setUid] = useState<string | undefined>(undefined);
-    const [ngoName, setNgoName] = useState("");
-    const [projectName, setProjectName] = useState("");
-    const [projectId, setProjectId] = useState("");
-    const [projectEmail, setProjectEmail] = useState("");
-    const [description, setDescription] = useState("");
-    const [potentialCredits, setPotentialCredits] = useState(0);
-    const [interestedTowards, setInterestedTowards] = useState("");
+
+
+    const [ngoName, setNgoName] = useState<string>("");
+    const [ngoPhone, setNgoPhone] = useState<number>(0);
+    const [ngoEmail, setNgoEmail] = useState<string>("");
+    const [proofOfNgo, setProffOfNgo] = useState<string>("")
+    const [proofOfNgoLocation, setProffOfNgoLocation] = useState<string>("");
+    const [ngoLocation, setNgoLocation] = useState<string>("");
+    const [ngoDescription, setNgoDescription] = useState<string>("");
+
+
+    const createNGO = () => {
+        if (ngoName.length <= 3) return false;
+        if (ngoEmail.length <= 5) return false;
+        if (!ngoPhone) return false;
+        if (proofOfNgo.length <= 3) return false;
+        if (proofOfNgoLocation.length <= 5) return false;
+        if (ngoLocation.length <= 3) return false;
+        if (ngoDescription.length <= 5) return false;
+
+        return true;
+    }
 
     return (
         <div className="min-h-screen bg-white pt-6  px-4 sm:px-6 lg:px-8 pb-36">
@@ -49,57 +62,85 @@ const NGOPage = () => {
                                         placeholder="Your NGO name"
                                         value={ngoName}
                                         onChange={(e) => {
-                                            setNgoName(e.target.value);
+                                            setNgoName(e.target.value)
                                         }}
                                     />
                                 </div>
                             </div>
+
                             <div className="sm:col-span-6">
                                 <label
                                     className="block text-sm font-medium text-gray-700"
-                                    htmlFor="project-name"
+                                    htmlFor="phone"
                                 >
-                                    Project Name
+                                    Phone
                                 </label>
 
                                 <div className="mt-1">
                                     <Input
-                                        id="project-name"
-                                        type="text"
-                                        placeholder="Your Project Name"
-                                        value={projectName}
+                                        id="phone"
+                                        type="number"
+                                        placeholder="Provide your project email"
+                                        value={ngoPhone}
                                         onChange={(e) => {
-                                            setProjectName(e.target.value);
+                                            setNgoPhone(Number(e.target.value))
                                         }}
+
                                     />
                                 </div>
                             </div>
+
                             <div className="sm:col-span-6">
                                 <label
                                     className="block text-sm font-medium text-gray-700"
-                                    htmlFor="project-id"
+                                    htmlFor="pfn"
                                 >
-                                    Project ID
+                                    Proof of NGO
                                 </label>
 
                                 <div className="mt-1">
                                     <Input
-                                        id="project-id"
+                                        id="pfn"
                                         type="text"
-                                        placeholder="Your Project ID"
-                                        value={projectId}
+                                        placeholder="Provide your NGO certificate proff"
+                                        value={proofOfNgo}
                                         onChange={(e) => {
-                                            setProjectId(e.target.value);
+                                            setProffOfNgo(e.target.value)
                                         }}
+
                                     />
                                 </div>
                             </div>
+
+                            <div className="sm:col-span-6">
+                                <label
+                                    className="block text-sm font-medium text-gray-700"
+                                    htmlFor="prl"
+                                >
+                                    Proof of Location
+                                </label>
+
+                                <div className="mt-1">
+                                    <Input
+                                        id="prl"
+                                        type="text"
+                                        placeholder="Provide your NGO location proff"
+                                        value={proofOfNgoLocation}
+                                        onChange={(e) => {
+                                            setProffOfNgoLocation(e.target.value)
+                                        }}
+
+                                    />
+                                </div>
+                            </div>
+
+
                             <div className="sm:col-span-6">
                                 <label
                                     className="block text-sm font-medium text-gray-700"
                                     htmlFor="project-email"
                                 >
-                                    Project Email
+                                    Email
                                 </label>
 
                                 <div className="mt-1">
@@ -107,33 +148,15 @@ const NGOPage = () => {
                                         id="project-email"
                                         type="email"
                                         placeholder="Provide your project email"
-                                        value={projectEmail}
+                                        value={ngoEmail}
                                         onChange={(e) => {
-                                            setProjectEmail(e.target.value);
+                                            setNgoEmail(e.target.value)
                                         }}
-                                    />
-                                </div>
-                            </div>
-                            <div className="sm:col-span-6">
-                                <label
-                                    className="block text-sm font-medium text-gray-700"
-                                    htmlFor="potential-credits"
-                                >
-                                    Potential Credits
-                                </label>
 
-                                <div className="mt-1">
-                                    <Input
-                                        type="number"
-                                        id="potential-credits"
-                                        placeholder="Provide potential credits"
-                                        value={potentialCredits}
-                                        onChange={(e) => {
-                                            setPotentialCredits(Number(e.target.value));
-                                        }}
                                     />
                                 </div>
                             </div>
+
                             <div className="sm:col-span-6">
                                 <label
                                     className="block text-sm font-medium text-gray-700"
@@ -143,9 +166,9 @@ const NGOPage = () => {
                                 </label>
                                 <div className="mt-1">
                                     <Select
-                                        onValueChange={(value) => {
-                                            setInterestedTowards(value);
-                                        }}
+                                    // onValueChange={(value) => {
+                                    //     setInterestedTowards(value);
+                                    // }}
                                     >
                                         <SelectTrigger id="interested-towards">
                                             <SelectValue placeholder="Select your interest" />
@@ -175,6 +198,10 @@ const NGOPage = () => {
                                         id="ngo-address"
                                         placeholder="Tell us about your NGO "
                                         rows={2}
+                                        value={ngoLocation}
+                                        onChange={(e) => {
+                                            setNgoLocation(e.target.value)
+                                        }}
                                     />
                                 </div>
                                 <p className="mt-2 text-sm text-gray-500">
@@ -194,9 +221,9 @@ const NGOPage = () => {
                                         id="description"
                                         placeholder="Tell us about your NGO and its mission."
                                         rows={6}
-                                        value={description}
+                                        value={ngoDescription}
                                         onChange={(e) => {
-                                            setDescription(e.target.value);
+                                            setNgoDescription(e.target.value);
                                         }}
                                     />
                                 </div>
@@ -208,6 +235,7 @@ const NGOPage = () => {
                                 <div className="flex justify-center items-center w-full">
                                     <Button
                                         className="mt-10 w-2/5 font-semibold"
+                                        onClick={() => createNGO()}
                                     >
                                         Submit Application
                                     </Button>

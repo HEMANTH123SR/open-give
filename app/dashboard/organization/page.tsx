@@ -1,9 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
-
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -41,10 +37,19 @@ export default function Dashboard() {
                         <div className="flex items-center">
                             <TabsList>
                                 <TabsTrigger value="all">All</TabsTrigger>
-                                <TabsTrigger value="active">Active</TabsTrigger>
-                                <TabsTrigger value="draft">Draft</TabsTrigger>
-                                <TabsTrigger value="archived" className="hidden sm:flex">
-                                    Archived
+                                <TabsTrigger value="Completed">Completed</TabsTrigger>
+                                <TabsTrigger
+                                    value="progress
+"
+                                >
+                                    progress
+                                </TabsTrigger>
+                                <TabsTrigger
+                                    value="Declined
+"
+                                    className="hidden sm:flex"
+                                >
+                                    Declined
                                 </TabsTrigger>
                             </TabsList>
                             <div className="ml-auto flex items-center gap-2">
@@ -61,11 +66,13 @@ export default function Dashboard() {
                                         <DropdownMenuLabel>Filter by</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuCheckboxItem checked>
-                                            Active
+                                            Completed
                                         </DropdownMenuCheckboxItem>
-                                        <DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
                                         <DropdownMenuCheckboxItem>
-                                            Archived
+                                            progress
+                                        </DropdownMenuCheckboxItem>
+                                        <DropdownMenuCheckboxItem>
+                                            Declined
                                         </DropdownMenuCheckboxItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -78,7 +85,7 @@ export default function Dashboard() {
                                 <Button size="sm" className="h-8 gap-1">
                                     <PlusCircle className="h-3.5 w-3.5" />
                                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                                        Add Product
+                                        Donation
                                     </span>
                                 </Button>
                             </div>
@@ -86,9 +93,10 @@ export default function Dashboard() {
                         <TabsContent value="all">
                             <Card x-chunk="dashboard-06-chunk-0">
                                 <CardHeader>
-                                    <CardTitle>Products</CardTitle>
+                                    <CardTitle>Donations</CardTitle>
                                     <CardDescription>
-                                        Manage your products and view their sales performance.
+                                        Listing
+                                        all the donations made by you
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>
@@ -96,9 +104,8 @@ export default function Dashboard() {
                                         <TableHeader>
                                             <TableRow>
                                                 <TableHead className="hidden w-[0px] sm:table-cell"></TableHead>
-                                                <TableHead>
-                                                    Ngo Organization
-                                                </TableHead>
+                                                <TableHead>NGO
+ Organization</TableHead>
                                                 <TableHead>Status</TableHead>
                                                 <TableHead className="hidden md:table-cell">
                                                     Price
@@ -119,7 +126,7 @@ export default function Dashboard() {
                                                     Laser Lemonade Machine
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline">Draft</Badge>
+                                                    <Badge variant="outline">progress</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $499.99
@@ -154,7 +161,7 @@ export default function Dashboard() {
                                                     Hypernova Headphones
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline">Active</Badge>
+                                                    <Badge variant="outline">Completed</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $129.99
@@ -189,7 +196,7 @@ export default function Dashboard() {
                                                     AeroGlow Desk Lamp
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline">Active</Badge>
+                                                    <Badge variant="outline">Completed</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $39.99
@@ -224,7 +231,7 @@ export default function Dashboard() {
                                                     TechTonic Energy Drink
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="secondary">Draft</Badge>
+                                                    <Badge variant="secondary">progress</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $2.99
@@ -259,7 +266,7 @@ export default function Dashboard() {
                                                     Gamer Gear Pro Controller
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline">Active</Badge>
+                                                    <Badge variant="outline">Completed</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $59.99
@@ -294,7 +301,7 @@ export default function Dashboard() {
                                                     Luminous VR Headset
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline">Active</Badge>
+                                                    <Badge variant="outline">Completed</Badge>
                                                 </TableCell>
                                                 <TableCell className="hidden md:table-cell">
                                                     $199.99
