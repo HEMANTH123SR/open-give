@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${dmSans.className} bg-[#070815]`}
+        <body className={`${dmSans.className} bg-[#070815] overflow-x-hidden`}
         >
           <Nav />
           {children}
